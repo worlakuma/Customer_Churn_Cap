@@ -46,21 +46,22 @@ The Churn Predictor App is a cutting-edge tool designed for telco companies to a
 
 ## Demo
 ### Watch Demo Video
-[Watch the demo video](https://www.youtube.com/watch?v=8lGpZkjnkt4) to see the Churn Predictor App in action and learn how to maximize its potential.
+[Watch the demo video](https://www.youtube.com/watch?v=8lGpZkjnkt4) to see the Customer Churn Predictor App in action and learn how to maximize its potential.
 
 ## Installation
 
 ### How to Run the Application
 To run the Churn Predictor App locally, follow these steps:
 
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Nfayem/Churn_Predictor.git
+   git clone https://github.com/worlakuma/Customer_Churn_Cap.git
    cd Churn_Predictor
    ```
 2. Install the necessary packages:
    ```bash
-   pip install -r LP4_STAPP_requirements.txt
+   pip install -r requirements.txt
    ```
 3. Run the Streamlit app:
    ```bash
@@ -124,8 +125,8 @@ The app is organized into several key sections:
 ## Contact Information
 ### Need Help?
 For support, collaboration, or any inquiries, please contact us at:
-- **Email**: [sdi@azubiafrica.com](mailto:sdi@azubiafrica.com)
-- **GitHub**: [Churn Predictor App Repository](https://github.com/Nfayem/Churn_Predictor.git)
+- **Email**: [sdi@azubiafrica.com](mailto:wolakuma@gmail.com)
+- **GitHub**: [Churn Predictor App Repository](https://github.com/worlakuma/Customer_Churn_Cap.git)
 
 ## Meet the Team
 We are a dedicated team of data science professionals from the Azubi-Africa Data Analytics Program, working together to deliver impactful insights through the Churn Predictor App.
