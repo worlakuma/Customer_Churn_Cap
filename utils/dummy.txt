@@ -1,0 +1,114 @@
+# Initialize dictionary to store predicted probabilities
+y_test_probabilities = {}
+
+# Iterate over the best estimators to get predicted probabilities for the test dataset
+for model_name, model in best_estimators.items():
+    try:
+        # Get the predicted probabilities for each model (assuming binary classification)
+        y_prob = model.predict_proba(df_test_model)[:, 1]
+        y_test_probabilities[model_name] = y_prob
+    except AttributeError:
+        # Some models (like SVM) may not have predict_proba; handle appropriately
+        print(f"Model {model_name} does not support probability predictions")
+
+# Convert predicted probabilities to a DataFrame for analysis
+df_probabilities = pd.DataFrame(y_test_probabilities)
+
+# Summary statistics for predicted probabilities (mean, variance, etc.)
+df_prob_summary = df_probabilities.describe()
+
+# Sort models by the mean predicted probability or any other metric (variance, etc.)
+df_prob_summary_sorted = df_prob_summary.loc['mean'].sort_values(ascending=False)
+
+# Display ranking of models based on the mean predicted probability
+print("\nModel ranking based on predicted probabilities (mean):")
+print(df_prob_summary_sorted)
+
+plt.figure(figsize=(10, 6))
+for model_name in df_probabilities.columns:
+    sns.kdeplot(df_probabilities[model_name], label=model_name, fill=True)
+
+plt.title("Predicted Probability Distributions for Each Model")
+plt.xlabel("Predicted Probability of Churn")
+plt.ylabel("Density")
+plt.legend()
+plt.show()
+
+st.checkbox('Yes')
+st.button('Click Me')
+st.radio('Pick your gender', ['Male', 'Female'])
+st.selectbox('Pick a fruit', ['Apple', 'Banana', 'Orange'])
+st.multiselect('Choose a planet', ['Jupiter', 'Mars', 'Neptune'])
+st.select_slider('Pick a mark', ['Bad', 'Good', 'Excellent'])
+st.slider('Pick a number', 0, 50)
+
+st.number_input('Pick a number', 0, 10)
+st.text_input('Email address')
+st.date_input('Traveling date')
+st.time_input('School time')
+st.text_area('Description')
+st.file_uploader('Upload a photo')
+st.color_picker('Choose your favorite color')
+
+st.balloons()  # Celebration balloons
+st.progress(10)  # Progress bar
+with st.spinner('Wait for it...'):
+    time.sleep(10)  # Simulating a process delay
+
+st.success("You did it!")
+st.error("Error occurred")
+st.warning("This is a warning")
+st.info("It's easy to build a Streamlit app")
+st.exception(RuntimeError("RuntimeError exception"))
+
+import streamlit as st
+import matplotlib.pyplot as plt
+import numpy as np
+
+rand = np.random.normal(1, 2, size=20)
+fig, ax = plt.subplots()
+ax.hist(rand, bins=15)
+st.pyplot(fig)
+
+df = pd.DataFrame(np.random.randn(10, 2), columns=['x', 'y'])
+st.line_chart(df)
+
+df = pd.DataFrame(np.random.randn(10, 2), columns=['x', 'y'])
+st.bar_chart(df)
+
+df = pd.DataFrame(np.random.randn(10, 2), columns=['x', 'y'])
+st.area_chart(df)
+
+df = pd.DataFrame(np.random.randn(500, 3), columns=['x', 'y', 'z'])
+chart = alt.Chart(df).mark_circle().encode(
+    x='x', y='y', size='z', color='z', tooltip=['x', 'y', 'z']
+)
+st.altair_chart(chart, use_container_width=True)
+
+st.image("kid.jpg", caption="A kid playing")
+st.audio("audio.mp3")
+st.video("video.mp4")
+
+Step 1. Create a YAML file
+credentials:
+  usernames:
+    jsmith:
+      email: jsmith@gmail.com
+      name: John Smith
+      password: abc # To be replaced with hashed password
+    rbriggs:
+      email: rbriggs@gmail.com
+      name: Rebecca Briggs
+      password: def # To be replaced with hashed password
+cookie:
+  expiry_days: 30
+  key: random_signature_key # Must be string
+  name: random_cookie_name
+preauthorized:
+  emails:
+  - melsby@gmail.com
+
+Step 2. Use the Hasher module to convert your plain text passwords into hashed passwords:
+hashed_passwords = stauth.Hasher(['abc', 'def']).generate()
+
+Step 3.  Replace the plain text passwords in the YAML file with the generated hashed passwords.
