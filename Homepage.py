@@ -18,7 +18,6 @@ st.set_page_config(
 )
 # Function to load lottie animations from URL
 
-# invoke_login_widget('Secure Login')
 # Import the YAML file
 with open('./config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
@@ -82,7 +81,7 @@ elif st.session_state['authentication_status']:
             st.header('Technologies used')
             st.markdown('''
             - Python (with libraries like pandas, scikit-learn, and streamlit)
-            - Machine learning algorithms (e.g., logistic regression, decision trees)
+            - Machine learning algorithms (e.g., Random Forest, K-Nrearest Neighbors, and Feedforward Neural Network)
             - Data visualization libraries (e.g., matplotlib, seaborn)
             ''')
         with right_column:
@@ -104,6 +103,10 @@ elif st.session_state['authentication_status']:
                             - #### Determining the lifetime values of customers to the business
                             - #### Forecasting the likelyhood of customer churning
                             """) 
+                st.subheader('Contact')
+                st.markdown('''
+                - [Gabriel K. Kuma](https://www.linkedin.com/in/gabrielkuma/)
+                    ''')
         with right_column:
             display_lottie("About Us")     
         

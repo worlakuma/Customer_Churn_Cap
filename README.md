@@ -1,32 +1,7 @@
-<img src="./assets/team_logo.svg" alt="Churn Predictor App logo" style="margin-top:0px;width:200px"></img>
 
 # **Customer Churn Capstone Project**
 
 **A powerful machine learning-based application to predict customer churn for telco companies.**
-
-<!-- ## Table of Contents
-- [**CHURN PREDICTOR**](#churn-predictor)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [App Features](#app-features)
-    - [Key Features](#key-features)
-    - [User Benefits](#user-benefits)
-  - [Demo](#demo)
-    - [Watch Demo Video](#watch-demo-video)
-  - [Installation](#installation)
-    - [How to Run the Application](#how-to-run-the-application)
-  - [Usage](#usage)
-    - [Screenshots](#screenshots)
-  - [Machine Learning Integration](#machine-learning-integration)
-  - [App Structure](#app-structure)
-  - [Contact Information](#contact-information)
-    - [Need Help?](#need-help)
-  - [Meet the Team](#meet-the-team)
-    - [Team Members](#team-members)
-    - [Our Mission](#our-mission)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Development Workflow:](#development-workflow) -->
 
 ## Introduction
 This app is designed to predict customer churn for telecomunications companies in the business of providing customers with airtime and mobile data bundles
@@ -67,39 +42,6 @@ For a smooth setup, ensure all dependencies are correctly installed.
 ## Usage
 Once installed, the app can be accessed via your web browser at `http://localhost:8501`. The homepage provides an overview of the app and the the team of developers behind its production. A history page is available to provide an overview of your current data and churn predictions.
 
-<!-- ### Screenshots -->
-<!-- <table>
-  <tr>
-    <td>
-      <h4>Welcome Page</h4>
-      <img src="./assets/churn_predictor.png" alt="Welcome Page" width="400"/>
-    </td>
-    <td>
-      <h4>Home Page</h4>
-      <img src="./assets/home.png" alt="Home Page" width="400" height='400'/>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h4>Data Management</h4>
-      <img src="./assets/data.png" alt="Data Management" width="400"/>      
-    </td>
-    <td>
-      <h4>Dashboard Overview</h4>
-      <img src="./assets/dashboard.png" alt="Dashboard Overview" width="400" height='425'/>      
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h4>Prediction Results</h4>
-      <img src="./assets/prediction.png" alt="Prediction Results" width="400"/>
-    </td>
-    <td>
-      <h4>History Page</h4>
-      <img src="./assets/history.png" alt="History Page" width="400" height='275'/>
-    </td>
-  </tr>
-</table> -->
 
 ## Machine Learning Integration
 The Churn Predictor App uses powerful machine learning models like Random Forest, K-Nrearest Neighbors, and Feedforward Neural Network to predict churn. The models have been fine-tuned for accuracy, and the app provides probability estimates for each prediction, allowing businesses to prioritize retention efforts.
@@ -127,21 +69,10 @@ The app is organized into several key sections:
 ### Need Help?
 For support, collaboration, or any inquiries, please contact us at:
 - **Email**: [sdi@azubiafrica.com](mailto:wolakuma@gmail.com)
-- **GitHub**: [Customer Churn App Repository](https://github.com/worlakuma/Customer_Churn_Cap.git)
+- **Linkdin**: [Link](https://www.linkedin.com/in/gabrielkuma/)
 
-## Meet the Team
-We are a dedicated team of data science professionals from the Azubi-Africa Data Analytics Program, working together to deliver impactful insights through the Churn Predictor App.
 
 ### Colaborators
-<!-- | <img src="./assets/devops.jpeg" alt="Nfayem Imoro" width="200" height="200"> | <img src="./assets/team_member_2.jpeg" alt="Gabriel Koku Kuma" width="200" height="200"> | <img src="./assets/jackops.jpg" alt="Jackline Wangari Maina" width="200" height="200"> |
-|:-----------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------:|
-| **Nfayem Imoro**                                                              | **Gabriel Koku Kuma**                                                                    | **Jackline Wangari Maina**                                                             |
-| Lead Analyst & Project Manager                                                     | Data Engineer & Modeling Expert                                                          | Machine Learning Specialist                                                            |
-
-| <img src="./assets/team_member_4.jpeg" alt="Obed Korda" width="200" height="200"> | <img src="./assets/team_member_5.jpeg" alt="Godfred Frank Aning" width="200" height="200"> | <img src="./assets/team_member_6.jpeg" alt="Victor Obondo" width="200" height="200"> |
-|:---------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
-| **Obed Korda**                                                                    | **Godfred Frank Aning**                                                                    | **Victor Obondo**                                                                    |
-| Customer Churn Analyst                                                            | Data Visualization Specialist                                                              | Database Manager                                                                     | -->
 
 **Nfayem Imoro** 
 
@@ -152,13 +83,6 @@ We are a dedicated team of data science professionals from the Azubi-Africa Data
 **Godfred Frank Aning**
 
 **Victor Obondo**
-
-### Our Mission
-We aim to drive insights and impact through collaborative projects and cutting-edge analytics. Join us in leveraging data for meaningful advancements! 🌍📈
-
-
-<!-- ## Contributing
-We welcome contributions from the community! Please read our [Contributing Guide](https://github.com/Nfayem/Churn_Predictor/blob/DevOps/CONTRIBUTING.md) for more information on how to get involved. -->
 
 
 ## License
