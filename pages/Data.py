@@ -58,7 +58,7 @@ if st.session_state.get("authentication_status"):
         time.sleep(0.03)
         loadings_progress.progress(i+1)
 
-    st.success('Dummy data loaded successfully') 
+    st.success('Template data loaded successfully') 
 
 #     # initial_df = load_data()
 
@@ -245,10 +245,10 @@ if st.session_state.get("authentication_status"):
                 st.dataframe(dfu[cat_cols_uploaded])
 
             elif options2 == "Summary Statistics(Categorical Columns)":
-                st.dataframe(default_df[cat_cols].describe())
+                st.dataframe(dfu[cat_cols].describe())
 
             elif options2 == "Summary Statistics(Numerical Columns)":
-                st.dataframe(default_df[num_cols].describe())    
+                st.dataframe(dfu[num_cols].describe())    
                     # Optionally display the uploaded DataFrame
         else:
             st.error("Uploaded data structure does not match the template.")

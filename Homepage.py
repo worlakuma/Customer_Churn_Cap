@@ -37,23 +37,13 @@ authenticator = st.session_state['authenticator']
 
 # Load the authentication configuration
 if not st.session_state.get('authentication_status'):  # Use .get() for session state checks
-    # st.warning('Please enter your credentials')
     
-    # st.title('Welcome to our Homepage')
-    # left_column, right_column = st.columns(2)
-    # with left_column:
-    #     st.header("Secure Login")
-    #     st.write('''
-
-    #             Please enter your credentials
-                 
-    #              '''
-    #     )
-    # with right_column:
     st.title('Welcome to the Churn Predictor App')
     invoke_login_widget('Login')
     
-        # display_lottie_on_page("Login")
+    
+# st.image("assets/https://github.com/worlakuma/Customer_Churn_Cap/blob/main/assets/Animation%20-%201723455741266.json")
+
     st.code("""
             Guest Account
             Username: jsmith
@@ -70,7 +60,7 @@ elif st.session_state['authentication_status']:
             icons=['house','gear'], 
             menu_icon="cast", default_index=0, orientation="horizontal")
     selected
-        #intro talking about title 
+        
     if selected == "Home":
 
     # Display the content in Streamlit
@@ -83,11 +73,11 @@ elif st.session_state['authentication_status']:
                 st.markdown(""" ### This app is designed to predict customer churn for telecomunications companies in the business of providing customers with airtime and mobile data bundles""")
                 
             st.header('Key features')
-            st.markdown('''
+            st.markdown("""
             - Real-time data analysis
             - Advanced machine learning algorithms for predicting customer churn
             - Customizable dashboards and reports
-            ''')
+            """)
 
             st.header('Technologies used')
             st.markdown('''
@@ -95,6 +85,8 @@ elif st.session_state['authentication_status']:
             - Machine learning algorithms (e.g., logistic regression, decision trees)
             - Data visualization libraries (e.g., matplotlib, seaborn)
             ''')
+        with right_column:
+            display_lottie("Homepage")
 
     if selected == 'About Us':
         with st.container():
@@ -109,7 +101,9 @@ elif st.session_state['authentication_status']:
                             #### The mission of the team is to provide insights from data that will drive business decisions through:
                             
                             - #### Data exploration to harness the most optimal binary classification models capable of providing a thorough understanding of customer behaviour.
-                            - #### Determining the livetime values of customers to the business
+                            - #### Determining the lifetime values of customers to the business
                             - #### Forecasting the likelyhood of customer churning
-                            """)  
+                            """) 
+        with right_column:
+            display_lottie("About Us")     
         

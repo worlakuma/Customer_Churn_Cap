@@ -29,20 +29,14 @@
   - [Development Workflow:](#development-workflow)
 
 ## Introduction
-The Churn Predictor App is a cutting-edge tool designed for telco companies to accurately predict customer churn using advanced machine learning algorithms. By leveraging historical data, this app helps businesses retain customers by identifying those at risk of churning and enabling targeted retention strategies.
+This app is designed to predict customer churn for telecomunications companies in the business of providing customers with airtime and mobile data bundles
 
 ## App Features
 
 ### Key Features
-- **Accurate Predictions**: Utilizes state-of-the-art machine learning models to predict customer churn.
-- **User-Friendly Interface**: Easy-to-navigate interface designed for both technical and non-technical users.
-- **Real-Time Insights**: Provides instant feedback on customer churn risk.
-- **Customizable Features**: Allows integration with various data sources and model parameters.
-
-### User Benefits
-- **Data-Driven Decisions**: Empowers businesses to make informed decisions based on predictive analytics.
-- **Easy Machine Learning Integration**: Seamlessly integrates with your existing data infrastructure.
-- **Enhanced Customer Retention**: Enables proactive measures to reduce churn and increase customer loyalty.
+- Real-time data analysis
+- Advanced machine learning algorithms for predicting customer churn
+- Customizable dashboards and reports
 
 ## Demo
 ### Watch Demo Video
@@ -51,13 +45,13 @@ The Churn Predictor App is a cutting-edge tool designed for telco companies to a
 ## Installation
 
 ### How to Run the Application
-To run the Churn Predictor App locally, follow these steps:
+To run the Customer Churn App locally, follow these steps:
 
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/worlakuma/Customer_Churn_Cap.git
-   cd Churn_Predictor
+   cd Customer_Churn
    ```
 2. Install the necessary packages:
    ```bash
@@ -65,7 +59,7 @@ To run the Churn Predictor App locally, follow these steps:
    ```
 3. Run the Streamlit app:
    ```bash
-   streamlit run Churn_Predictor.py
+   streamlit run Homepage.py
    ```
 
 For a smooth setup, ensure all dependencies are correctly installed.
@@ -73,8 +67,8 @@ For a smooth setup, ensure all dependencies are correctly installed.
 ## Usage
 Once installed, the app can be accessed via your web browser at `http://localhost:8501`. The homepage provides an overview of the app and the the team of developers behind its production. A history page is available to provide an overview of your current data and churn predictions.
 
-### Screenshots
-<table>
+<!-- ### Screenshots -->
+<!-- <table>
   <tr>
     <td>
       <h4>Welcome Page</h4>
@@ -105,39 +99,46 @@ Once installed, the app can be accessed via your web browser at `http://localhos
       <img src="./assets/history.png" alt="History Page" width="400" height='275'/>
     </td>
   </tr>
-</table>
+</table> -->
 
 ## Machine Learning Integration
-The Churn Predictor App uses powerful machine learning models like Random Forest, XGBoost, and Logistic Regression to predict churn. The models have been fine-tuned for accuracy, and the app provides probability estimates for each prediction, allowing businesses to prioritize retention efforts.
+The Churn Predictor App uses powerful machine learning models like Random Forest, K-Nrearest Neighbors, and Feedforward Neural Network to predict churn. The models have been fine-tuned for accuracy, and the app provides probability estimates for each prediction, allowing businesses to prioritize retention efforts.
 
 ## App Structure
 The app is organized into several key sections:
 
-1. **User Interaction**: 
-   - This section contains pages focused on user engagement and access, including the home page and login functionality. It serves as the gateway for users to interact with the platform. Details of the app features are included here as well.
+1. **Homepage**: 
+   - This section contains pages focused on user engagement and access, including the home page, about us and login functionality. It serves as the gateway for users to interact with the platform. Details of the app features are included here as well.
 
-2. **Data Management**:
+2. **Dashboard**:
    - This section houses tools for managing and analyzing data. It includes pages that provide an overview of the data and visualizations through an analytics dashboard. It’s where users can access and manipulate the core data.
 
-3. **Insights and Forecasting**:
+3. **Data**:
+  - This page is desinged to provide users with a comprehensive and interactive interface for accessing and managing data
+
+4. **History**:
+  - This section provides users with information on all previous and current single predictions
+
+5. **Predictions**:
    - This section is dedicated to generating insights from historical data and predicting future trends. It includes pages focused on exploring historical data and making projections based on that data.
+
 
 ## Contact Information
 ### Need Help?
 For support, collaboration, or any inquiries, please contact us at:
 - **Email**: [sdi@azubiafrica.com](mailto:wolakuma@gmail.com)
-- **GitHub**: [Churn Predictor App Repository](https://github.com/worlakuma/Customer_Churn_Cap.git)
+- **GitHub**: [Customer Churn App Repository](https://github.com/worlakuma/Customer_Churn_Cap.git)
 
 ## Meet the Team
 We are a dedicated team of data science professionals from the Azubi-Africa Data Analytics Program, working together to deliver impactful insights through the Churn Predictor App.
 
 ### Team Members
-| <img src="./assets/devops.jpeg" alt="Nfayem Imoro" width="200" height="200"> | <img src="./assets/team_member_2.jpeg" alt="Gabriel Koku Kuma" width="200" height="200"> | <img src="./assets/jackops.jpg" alt="Jackline Wangari Maina" width="200" height="200"> |
+<!-- | <img src="./assets/devops.jpeg" alt="Nfayem Imoro" width="200" height="200"> | <img src="./assets/team_member_2.jpeg" alt="Gabriel Koku Kuma" width="200" height="200"> | <img src="./assets/jackops.jpg" alt="Jackline Wangari Maina" width="200" height="200"> | -->
 |:-----------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------:|
 | **Nfayem Imoro**                                                              | **Gabriel Koku Kuma**                                                                    | **Jackline Wangari Maina**                                                             |
 | Lead Analyst & Project Manager                                                     | Data Engineer & Modeling Expert                                                          | Machine Learning Specialist                                                            |
 
-| <img src="./assets/team_member_4.jpeg" alt="Obed Korda" width="200" height="200"> | <img src="./assets/team_member_5.jpeg" alt="Godfred Frank Aning" width="200" height="200"> | <img src="./assets/team_member_6.jpeg" alt="Victor Obondo" width="200" height="200"> |
+<!-- | <img src="./assets/team_member_4.jpeg" alt="Obed Korda" width="200" height="200"> | <img src="./assets/team_member_5.jpeg" alt="Godfred Frank Aning" width="200" height="200"> | <img src="./assets/team_member_6.jpeg" alt="Victor Obondo" width="200" height="200"> | -->
 |:---------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
 | **Obed Korda**                                                                    | **Godfred Frank Aning**                                                                    | **Victor Obondo**                                                                    |
 | Customer Churn Analyst                                                            | Data Visualization Specialist                                                              | Database Manager                                                                     |
@@ -146,17 +147,18 @@ We are a dedicated team of data science professionals from the Azubi-Africa Data
 We aim to drive insights and impact through collaborative projects and cutting-edge analytics. Join us in leveraging data for meaningful advancements! 🌍📈
 
 
-## Contributing
-We welcome contributions from the community! Please read our [Contributing Guide](https://github.com/Nfayem/Churn_Predictor/blob/DevOps/CONTRIBUTING.md) for more information on how to get involved.
+<!-- ## Contributing
+We welcome contributions from the community! Please read our [Contributing Guide](https://github.com/Nfayem/Churn_Predictor/blob/DevOps/CONTRIBUTING.md) for more information on how to get involved. -->
 
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/Nfayem/Churn_Predictor/blob/DevOps/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/worlakuma/Customer_Churn_Cap/blob/main/LICENSE) file for details.
 
 ## Development Workflow:
 
 1. **Local Development**:
-   - Develop and test Streamlit app locally.
+   - Develop and test machine learning models locally.
+   - Develop and test Streamlit app by intergrating the trained models locally.
    - Ensure that all features work as expected.
    - Fix any bugs or issues that arise during development.
 

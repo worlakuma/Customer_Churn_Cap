@@ -7,7 +7,7 @@ import os
 from utils.login import invoke_login_widget
 
 # Invoke the login form
-invoke_login_widget('Future Projections')
+invoke_login_widget('Predictive Analytics')
 
 # Fetch the authenticator from session state
 authenticator = st.session_state.get('authenticator')
@@ -18,7 +18,6 @@ if not authenticator:
 
 # Check authentication status
 if st.session_state.get("authentication_status"):
-    st.title("Predictive Analytics")
 
 
     # Load models

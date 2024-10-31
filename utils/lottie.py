@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 import requests
 from streamlit_lottie import st_lottie
 
@@ -15,14 +16,31 @@ def load_lottie_data(url):
 # Display loaded lottie data on various pages
 def display_lottie(page_name):
     lottie_urls = {
-        'Homepage': 'http://as',
-        'Predictions': 'http://as',
-        'Dashboard': 'http://'
+        # 'Homepage': 'https://github.com/worlakuma/Customer_Churn_Cap/blob/main/assets/Animation%20-%201723455741266.json',
+        # 'Dashboard': 'https://github.com/worlakuma/Customer_Churn_Cap/blob/main/assets/Animation%20-%201723456654279.json',
+        # 'Data': 'https://github.com/worlakuma/Customer_Churn_Cap/blob/main/assets/Animation%20-%201730036148913.json',
+        'Homepage': "https://lottie.host/9ef1b405-72ec-4ba9-be8b-96a034df19c6/YIcIu9NyJP.json",
+        # 'Homepage': 'https://raw.githubusercontent.com/worlakuma/Customer_Churn_Cap/main/assets/Animation%20-%201723455741266.json',
+        'Dashboard': 'https://raw.githubusercontent.com/worlakuma/Customer_Churn_Cap/main/assets/Animation%20-%201723456654279.json',
+        # 'About Us': 'https://lottie.host/f3734960-8bd5-4e1e-94c7-57787a497ac7/dXSG'
+        # 'Data': 'https://raw.githubusercontent.com/worlakuma/Customer_Churn_Cap/main/assets/Animation%20-%201730036148913.json',
+        # 'History': 'http://',
+        # 'Predictions': 'http://as'
+        
     }
-    if page_name in lottie_urls:
-        animation_data = load_lottie_data(lottie_urls[page_name]) 
+    url = lottie_urls.get(page_name)
+    if url:
+        animation_data = load_lottie_data(url)
         if animation_data:
             st_lottie(animation_data, height=300, key=page_name)  
+        else:
+            st.error(f"No lottie animation data available for {page_name}")
     else:
-        st.error("No lottie animation data found")      
+        st.error("Invalid or missing URL for this page.")
+    # if page_name in lottie_urls:
+    #     animation_data = load_lottie_data(lottie_urls[page_name]) 
+    #     if animation_data:
+    #         st_lottie(animation_data, height=300, key=page_name)  
+    # else:
+    #     st.error("No lottie animation data found")      
            

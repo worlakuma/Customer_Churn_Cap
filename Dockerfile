@@ -36,4 +36,4 @@ RUN pip3 install --upgrade pip && pip3 install -r requirements.txt
 COPY ./ ./
 
 # Specify the command to run the application
-CMD [ "streamlit", "run", "app.py" ]
+CMD [ "streamlit", "run", "caps.py" ]

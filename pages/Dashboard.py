@@ -1,5 +1,6 @@
 import streamlit as st 
 import pandas as pd
+import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
@@ -23,35 +24,24 @@ if st.session_state.get("authentication_status"):
     st.subheader('Customer Churn Dashboard')
     st.markdown('--------------------------------')
 
-    # Create a selectbox option for EDA and KPIs
-    eda_kpi_options = ['Exploratory Data Analysis (EDA)', 'Key Performance Indicators (KPIs)']
-    eda_kpi_selection = st.selectbox('Select Analysis  Options', eda_kpi_options)
-    # selected_options = option_menu(None, options=['Exploratory Data Analysis (EDA),'    'Key Performance Indicator (KPI)'], menu_icon='cast', default_index=0, orientation='horizontal')
-    # selected_options
-    # selected_options = st.selectbox('Select Analysis Options', ['', 'Exploratory Data Analysis (EDA),' 'Key Performance Indicator (KPI)'], index=0)
-    
-    
-
-    # Load the default data
+    # Load default data
     @st.cache_data(persist=True, show_spinner=False)
     def load_default_data():
         df = pd.read_csv('./data/clean_cap_data.csv')
         return df
+           
     df_train = load_default_data()
 
-    # Ensure loaded data is initialized in session state
-    if df_train is not st.session_state:
-        st.session_state['data'] = df_train
+     # Ensure 'data_source' is initialized in session state
+    if 'data_source' not in st.session_state:
+        st.session_state['data_source'] = 'initial'
 
-    # Select numeric dtypes(int and float) for the analysis
+    # Create a selectbox option for EDA and KPIs
+    eda_kpi_options = ['Exploratory Data Analysis (EDA)', 'Key Performance Indicators (KPIs)']
+    eda_kpi_selection = st.selectbox('Select Analysis  Options', eda_kpi_options)
+    
     num_columns = df_train.select_dtypes(['int64', 'float64']).columns
 
-    def build_dashboard():
-        st.title("Analytics Dashboard")
-        
-        # Call the function from Data.py
-        dfu = load_uploaded_data()
-        st.write(dfu)
 
     # Create a function to apply filters
     def apply_filters(df):
@@ -80,6 +70,8 @@ if st.session_state.get("authentication_status"):
     # Apply filters to the data
     filtered_data = apply_filters(df_train)
 
+
+    # Exploratory Data Analysis
     if eda_kpi_selection == 'Exploratory Data Analysis (EDA)':
         st.write(
             """This dashboard provides insight into the customer churn data focusing on customer demographics, engagements and other key metrics
@@ -217,7 +209,7 @@ if st.session_state.get("authentication_status"):
                     help="This percentage shows how the total number of customers has changed after applying the selected filters."
                 )
 
-            # with col2:
+            with col2:
                 #KPI 2: Total Customers Retained
                 total_customers_retained = len(filtered_data[filtered_data["CHURN"] == 0])
                 total_customers_retained_delta = (total_customers_retained - unfiltered_total_customers_retained) / unfiltered_total_customers_retained * 100
@@ -228,7 +220,7 @@ if st.session_state.get("authentication_status"):
                     help="This percentage shows the change in the number of customers retained after applying the selected filters."
                 )
 
-            # with col3:
+            with col3:
                 # KPI 3: Average Monthly Income
                 avg_monthly_income = filtered_data['REVENUE'].mean()
                 avg_monthly_income_delta = (avg_monthly_income - unfiltered_avg_monthly_income) / unfiltered_avg_monthly_income * 100
@@ -239,7 +231,7 @@ if st.session_state.get("authentication_status"):
                     help="This percentage indicates how average monthly income of clients have changed after applying the selected filters."
                 )
 
-            # with col4:
+            with col4:
                 # KPI 4: Total Revenue
                 total_revenue = filtered_data['MONTANT'].sum()
                 total_revenue_delta = (total_revenue - unfiltered_total_revenue) / unfiltered_total_revenue * 100
@@ -306,29 +298,162 @@ if st.session_state.get("authentication_status"):
         - **Impact of Service Usage on Churn:** Evaluates the relationship between customer churn and their usage patterns, including calls made within the company’s network (ON_NET), calls to competitive providers (ORANGE, TIGO), and data consumption (DATA_VOLUME).
         """)
 
-        # col1, col2 = st.columns(2)
-        # with col1:
-        #     eda_kpi_options = st.selectbox(
-        #         'Please select an option', ('Univariate analysis', 'Bivariate analysis', 'Multivariate analysis'), index=None, placeholder='Select an option',
-        #     )
-    #     # Conditionally display data based on the selected option
-    #     if eda_kpi_options == 'Univariate':
-    #         st.write('### Univariate analysis')
-    #         col1, col2 = st.columns(2)
-    #         with col1:
+        with st.container():
+            col1, col2 = st.columns(2)
+
+            with col1:
+                # Plot: Churn Rate by Region
+                churn_by_region = filtered_data.groupby('REGION')['CHURN'].mean().reset_index()
+                churn_by_region['Churn'] = churn_by_region['CHURN'] * 100
+                fig_region_churn = px.bar(churn_by_region, x='REGION', y='CHURN', title='Churn Rate by Region')
+                st.plotly_chart(fig_region_churn, use_container_width=True)
+
+            with col2:
+                # Plot: Churn Rate Over Tenure
+                churn_rate_by_tenure = filtered_data.groupby('TENURE')['CHURN'].mean().reset_index()
+                fig_churn_tenure = px.line(churn_rate_by_tenure, x='TENURE', y='CHURN', title='Churn Rate Over Tenure')
+                st.plotly_chart(fig_churn_tenure, use_container_width=True)
+
+        # Apply a map to the data frame for the chun column
+        filtered_data['CHURN'] = filtered_data['CHURN'].map({1:'Yes', 0:'No'})
+
+        # Define the numerical features and categorize them
+        call_data_features = ['ON_NET', 'ORANGE', 'TIGO', 'DATA_VOLUME']
+
+        # Function to categorize features based on quantiles
+        def categorize_feature(df, feature):
+            low_thresh = df[feature].quantile(0.33)
+            high_thresh = df[feature].quantile(0.67)
+            
+            # Ensure that the thresholds are unique
+            if low_thresh == high_thresh:
+                high_thresh += 1e-5  # Add a small value to make them unique
+            
+            df[f'{feature}_category'] = pd.cut(df[feature],
+                                            bins=[-np.inf, low_thresh, high_thresh, np.inf],
+                                            labels=['Low', 'Medium', 'High'],
+                                            duplicates='drop')
+
+        # Assuming df is your DataFrame
+        for feature in call_data_features:
+            categorize_feature(filtered_data, feature)
+
+        # Create a container and columns for the plots
+        with st.container():
+            col1, col2 = st.columns(2)
+
+            with col1:
+                # Plot for ON_NET Usage
+                on_net_plot = px.histogram(filtered_data, x='ON_NET_category', color='CHURN',
+                                            title='ON_NET Usage vs. Churn Status',
+                                            color_discrete_map={'Yes': 'red', 'No': 'green'})
+                on_net_plot.update_layout(yaxis_title="Customers")
+                st.plotly_chart(on_net_plot, use_container_width=True)
+
+            with col2:
+                # Plot for ORANGE Usage
+                orange_plot = px.histogram(filtered_data, x='ORANGE_category', color='CHURN',
+                                            title='ORANGE Usage vs. Churn Status',
+                                            color_discrete_map={'Yes': 'red', 'No': 'green'})
+                orange_plot.update_layout(yaxis_title="Customers")
+                st.plotly_chart(orange_plot, use_container_width=True)
+
+        with st.container():
+            col1, col2 = st.columns(2)
+
+            with col1:
+                # Plot for TIGO Usage
+                tigo_plot = px.histogram(filtered_data, x='TIGO_category', color='CHURN',
+                                            title='TIGO Usage vs. Churn Status',
+                                            color_discrete_map={'Yes': 'red', 'No': 'green'})
+                tigo_plot.update_layout(yaxis_title="Customers")
+                st.plotly_chart(tigo_plot, use_container_width=True)
+
+            with col2:
+                # Plot for DATA_VOLUME Usage
+                data_volume_plot = px.histogram(filtered_data, x='DATA_VOLUME_category', color='CHURN',
+                                                title='DATA_VOLUME Usage vs. Churn Status',
+                                                color_discrete_map={'Yes': 'red', 'No': 'green'})
+                data_volume_plot.update_layout(yaxis_title="Customers")
+                st.plotly_chart(data_volume_plot, use_container_width=True) 
+
+        # Company Revenue and Customer Income Insights
+        st.markdown("#### Company Revenue and Customer Income Insights")
+        st.markdown("""
+        This section provides detailed insights into company revenue and customer income patterns:
+        - **Average Monthly Income by Region:** Shows the average income that customers generate per month across different regions.
+        - **Average Revenue by Region:** Displays the average revenue earned by the company from customers in each region.
+        - **Average Monthly Income by Tenure:** Illustrates how the average monthly income of customers changes with their length of tenure.
+        - **Average Revenue by Tenure:** Highlights the average revenue the company earns from customers based on their tenure.
+        """)
 
 
+        with st.container():
+            col1, col2 = st.columns(2)
 
+            with col1:
+                # Plot: Average Monthly Income by Region
+                avg_income_by_region = filtered_data.groupby('REGION')['REVENUE'].mean().reset_index()
+                fig_avg_income_by_region = px.bar(avg_income_by_region, x='REGION', y='REVENUE', title='Avg. Monthly Income by Region')
+                st.plotly_chart(fig_avg_income_by_region)
 
+            with col2:
+                # Plot: Average Revenue by Region
+                total_revenue_by_region = filtered_data.groupby('REGION')['MONTANT'].mean().reset_index()
+                fig_total_revenue_by_region = px.bar(total_revenue_by_region, x='REGION', y='MONTANT', title='Avg. Revenue by Region')
+                st.plotly_chart(fig_total_revenue_by_region)
 
+        with st.container():
+            col1, col2 = st.columns(2)
 
+            with col1:
+                # Plot: Average Monthly Income by Tenure
+                avg_income_by_tenure = filtered_data.groupby('TENURE')['REVENUE'].mean().reset_index()
+                fig_avg_income_by_tenure = px.bar(avg_income_by_tenure, x='TENURE', y='REVENUE', title='Avg. Monthly Income by Tenure')
+                st.plotly_chart(fig_avg_income_by_tenure)
 
+            with col2:
+                # Plot: Average Revenue by Tenure
+                total_revenue_by_tenure = filtered_data.groupby('TENURE')['MONTANT'].mean().reset_index()
+                fig_total_revenue_by_tenure = px.bar(total_revenue_by_tenure, x='TENURE', y='MONTANT', title='Avg. Revenue by Tenure')
+                st.plotly_chart(fig_total_revenue_by_tenure)
 
-# # Create two columns options to display summary statistics for numerical and categorical features
-#     col1, col2 = st.columns(2)
-#     with col1:
-#         st.write('**Summary Statistics**: Categorical Columns')
-#         st.dataframe(df_train[cat_cols].describe())
-#     with col2:
-#         st.write('**Summary Statistics**: Numerical Columns')
-#         st.dataframe(df_train[num_cols].describe())
+        # KPI data
+        kpi_data = {
+            'KPI': ['Total Customers', 'Total Customers Retained', 'Churn Rate', 'Avg. Monthly Income', 'Total Revenue'],
+            'Value': [f"{total_customers:,}", f"{total_customers_retained:,}", f"{churn_rate:.2f}%", f"CFA {avg_monthly_income:.2f}", f"CFA {total_revenue:,.2f}"]
+        }
+
+        # Create DataFrame
+        kpi_df = pd.DataFrame(kpi_data)
+        kpi_df.set_index('KPI', inplace=True)
+
+        # Function to apply conditional formatting based on the value
+        def color_kpi_value(value):
+            if '%' in value:
+                percent_value = float(value.strip('%'))
+                if percent_value < 30:
+                    color = 'green'
+                elif 30 <= percent_value < 70:
+                    color = 'yellow'
+                else:  
+                    color = 'red'
+            else:
+                color = 'lightblue'
+            return f'color: {color}'
+
+        # Function to apply conditional formatting
+        def highlight_churn(index):
+            color = 'background-color: #4B61F5' if index.name == 'Total Revenue' else ''
+            return [color] * len(index)
+
+        # Apply the color_negative_red function to the 'Value' column
+        styled_df = kpi_df.style.applymap(color_kpi_value, subset=['Value'])
+
+        # Apply the highlight_churn function to the entire row
+        styled_df = styled_df.apply(highlight_churn, axis=1)
+
+        # Display the styled DataFrame
+        st.markdown("#### Key Performance Indicators (KPIs)")
+        st.table(styled_df)
+               
