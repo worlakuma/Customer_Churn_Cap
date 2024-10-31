@@ -4,7 +4,7 @@
 
 **A powerful machine learning-based application to predict customer churn for telco companies.**
 
-## Table of Contents
+<!-- ## Table of Contents
 - [**CHURN PREDICTOR**](#churn-predictor)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
@@ -26,7 +26,7 @@
     - [Our Mission](#our-mission)
   - [Contributing](#contributing)
   - [License](#license)
-  - [Development Workflow:](#development-workflow)
+  - [Development Workflow:](#development-workflow) -->
 
 ## Introduction
 This app is designed to predict customer churn for telecomunications companies in the business of providing customers with airtime and mobile data bundles
@@ -114,10 +114,10 @@ The app is organized into several key sections:
    - This section houses tools for managing and analyzing data. It includes pages that provide an overview of the data and visualizations through an analytics dashboard. It’s where users can access and manipulate the core data.
 
 3. **Data**:
-  - This page is desinged to provide users with a comprehensive and interactive interface for accessing and managing data
+   - This page is desinged to provide users with a comprehensive and interactive interface for accessing and managing data
 
 4. **History**:
-  - This section provides users with information on all previous and current single predictions
+   - This section provides users with information on all previous and current single predictions
 
 5. **Predictions**:
    - This section is dedicated to generating insights from historical data and predicting future trends. It includes pages focused on exploring historical data and making projections based on that data.
@@ -132,16 +132,26 @@ For support, collaboration, or any inquiries, please contact us at:
 ## Meet the Team
 We are a dedicated team of data science professionals from the Azubi-Africa Data Analytics Program, working together to deliver impactful insights through the Churn Predictor App.
 
-### Team Members
-<!-- | <img src="./assets/devops.jpeg" alt="Nfayem Imoro" width="200" height="200"> | <img src="./assets/team_member_2.jpeg" alt="Gabriel Koku Kuma" width="200" height="200"> | <img src="./assets/jackops.jpg" alt="Jackline Wangari Maina" width="200" height="200"> | -->
+### Colaborators
+<!-- | <img src="./assets/devops.jpeg" alt="Nfayem Imoro" width="200" height="200"> | <img src="./assets/team_member_2.jpeg" alt="Gabriel Koku Kuma" width="200" height="200"> | <img src="./assets/jackops.jpg" alt="Jackline Wangari Maina" width="200" height="200"> |
 |:-----------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------:|
 | **Nfayem Imoro**                                                              | **Gabriel Koku Kuma**                                                                    | **Jackline Wangari Maina**                                                             |
 | Lead Analyst & Project Manager                                                     | Data Engineer & Modeling Expert                                                          | Machine Learning Specialist                                                            |
 
-<!-- | <img src="./assets/team_member_4.jpeg" alt="Obed Korda" width="200" height="200"> | <img src="./assets/team_member_5.jpeg" alt="Godfred Frank Aning" width="200" height="200"> | <img src="./assets/team_member_6.jpeg" alt="Victor Obondo" width="200" height="200"> | -->
+| <img src="./assets/team_member_4.jpeg" alt="Obed Korda" width="200" height="200"> | <img src="./assets/team_member_5.jpeg" alt="Godfred Frank Aning" width="200" height="200"> | <img src="./assets/team_member_6.jpeg" alt="Victor Obondo" width="200" height="200"> |
 |:---------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|
 | **Obed Korda**                                                                    | **Godfred Frank Aning**                                                                    | **Victor Obondo**                                                                    |
-| Customer Churn Analyst                                                            | Data Visualization Specialist                                                              | Database Manager                                                                     |
+| Customer Churn Analyst                                                            | Data Visualization Specialist                                                              | Database Manager                                                                     | -->
+
+**Nfayem Imoro** 
+
+**Jackline Wangari Maina** 
+
+**Obed Korda** 
+
+**Godfred Frank Aning**
+
+**Victor Obondo**
 
 ### Our Mission
 We aim to drive insights and impact through collaborative projects and cutting-edge analytics. Join us in leveraging data for meaningful advancements! 🌍📈
