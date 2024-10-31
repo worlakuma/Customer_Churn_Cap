@@ -6,6 +6,7 @@ import pyodbc
 import time
 import streamlit_authenticator as stauth
 from utils.login import invoke_login_widget
+from utils.lottie import display_lottie
 
 # Invoke the login form
 invoke_login_widget('Data Hub')
@@ -20,25 +21,27 @@ if not authenticator:
 # Check authentication status
 if st.session_state.get("authentication_status"):
 
-    # st.subheader("Data Overview")
-
+    
     # Display the content in Streamlit
     with st.container():
         st.write("---")
         left_column, right_column = st.columns(2)
-        st.subheader("""
-                        This page is desinged to provide users with a comprehensive and interactive interface for accessing and managing data.    
+        with left_column:
+            st.subheader("""
+                            This page is desinged to provide users with a comprehensive and interactive interface for accessing and managing data.    
+                                """)
+            st.markdown(""" 
+                            #### Upon uploading the data, users have access to several features:
+                            
+                            - #### Data Template: A sample template is provided to guide users in structuring their data correctly.
+                            - #### Data View: This section provides the option to view the data either as numerical, categorical or combined data types 
+                            - #### Data Summary: This section gives an overview of the dataset with key statistics
+                            - #### Data Upload: This section provides the option to upload custom data for analysis 
                             """)
-        st.markdown(""" 
-                           #### Upon uploading the data, users have access to several features:
-                           
-                           - #### Data Template: A sample template is provided to guide users in structuring their data correctly.
-                           - #### Data View: This section provides the option to view the data either as numerical, categorical or combined data types 
-                           - #### Data Summary: This section gives an overview of the dataset with key statistics
-                           - #### Data Upload: This section provides the option to upload custom data for analysis 
-                           """)
+        with right_column:
+            display_lottie('Data')                
 
-# Load the data
+    # Load the data
     @st.cache_data(persist=True)
     def load_data():
         df_train = pd.read_csv('./data/clean_cap_data.csv')
@@ -60,7 +63,6 @@ if st.session_state.get("authentication_status"):
 
     st.success('Template data loaded successfully') 
 
-#     # initial_df = load_data()
 
 # Create two columns options to display summary statistics for numerical and categorical features
     col1, col2 = st.columns(2)

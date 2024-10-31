@@ -16,7 +16,6 @@ import time
 st.set_page_config(
     page_title='Customer Churn Predictor', layout='wide'
 )
-# Function to load lottie animations from URL
 
 # Import the YAML file
 with open('./config.yaml') as file:
@@ -36,13 +35,9 @@ authenticator = st.session_state['authenticator']
 
 # Load the authentication configuration
 if not st.session_state.get('authentication_status'):  # Use .get() for session state checks
-    
     st.title('Welcome to the Churn Predictor App')
     invoke_login_widget('Login')
     
-    
-# st.image("assets/https://github.com/worlakuma/Customer_Churn_Cap/blob/main/assets/Animation%20-%201723455741266.json")
-
     st.code("""
             Guest Account
             Username: jsmith
@@ -50,10 +45,8 @@ if not st.session_state.get('authentication_status'):  # Use .get() for session 
 elif st.session_state['authentication_status'] == False:
     st.error('Username/password is incorrect')
 elif st.session_state['authentication_status']:
-    
-# if st.session_state.get("authentication_status"):
+
     authenticator.logout("Logout", "sidebar")
-#     st.sidebar.title(f'Welcome *{st.session_state["name"]}*')    
 
     selected = option_menu(None, options=["Home", "About Us"], 
             icons=['house','gear'], 
@@ -71,21 +64,21 @@ elif st.session_state['authentication_status']:
                 st.header('Predictive Analytics')
                 st.markdown(""" ### This app is designed to predict customer churn for telecomunications companies in the business of providing customers with airtime and mobile data bundles""")
                 
-            st.header('Key features')
-            st.markdown("""
-            - Real-time data analysis
-            - Advanced machine learning algorithms for predicting customer churn
-            - Customizable dashboards and reports
-            """)
+                st.header('Key features')
+                st.markdown("""
+                - Real-time data analysis
+                - Advanced machine learning algorithms for predicting customer churn
+                - Customizable dashboards and reports
+                """)
 
-            st.header('Technologies used')
-            st.markdown('''
-            - Python (with libraries like pandas, scikit-learn, and streamlit)
-            - Machine learning algorithms (e.g., Random Forest, K-Nrearest Neighbors, and Feedforward Neural Network)
-            - Data visualization libraries (e.g., matplotlib, seaborn)
-            ''')
-        with right_column:
-            display_lottie("Homepage")
+                st.header('Technologies used')
+                st.markdown('''
+                - Python (with libraries like pandas, scikit-learn, and streamlit)
+                - Machine learning algorithms (e.g., Random Forest, K-Nrearest Neighbors, and Feedforward Neural Network)
+                - Data visualization libraries (e.g., matplotlib, seaborn)
+                ''')
+            with right_column:
+                display_lottie("Homepage")
 
     if selected == 'About Us':
         with st.container():
@@ -107,6 +100,6 @@ elif st.session_state['authentication_status']:
                 st.markdown('''
                 - [Gabriel K. Kuma](https://www.linkedin.com/in/gabrielkuma/)
                     ''')
-        with right_column:
-            display_lottie("About Us")     
+            with right_column:
+                display_lottie('Homepage')     
         

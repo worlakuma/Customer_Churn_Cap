@@ -222,11 +222,6 @@ if st.session_state.get("authentication_status"):
             his_df['ModelUsed'] = st.session_state['selected_model']
             his_df['Prediction'] = predictions
             his_df['Probability'] = np.where(predictions == 1, np.round(probabilities[:, 1] * 100, 2), np.round(probabilities[:, 0] * 100, 2))
-        
-            # Save the history dataframe to a CSV file
-            # his_df.to_csv('./data/History.csv', mode='a', header=not os.path.exists('./data/History.csv'), index=False)            
-            #Display the predictions
-            # st.dataframe(dfp)
             st.dataframe(his_df)
         
        

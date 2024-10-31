@@ -5,7 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from streamlit_option_menu import option_menu
 import altair as alt
-# from utils.lottie import display_lottie_on_page
+from utils.lottie import display_lottie
 from utils.login import invoke_login_widget
 from pages.Data import load_uploaded_data
 
@@ -37,12 +37,13 @@ if st.session_state.get("authentication_status"):
         st.session_state['data_source'] = 'initial'
 
     # Create a selectbox option for EDA and KPIs
-    eda_kpi_options = ['Exploratory Data Analysis (EDA)', 'Key Performance Indicators (KPIs)']
-    eda_kpi_selection = st.selectbox('Select Analysis  Options', eda_kpi_options)
-    
-    num_columns = df_train.select_dtypes(['int64', 'float64']).columns
-
-
+    col1, col2 = st.columns(2)
+    with col1:
+        eda_kpi_options = ['Exploratory Data Analysis (EDA)', 'Key Performance Indicators (KPIs)']
+        eda_kpi_selection = st.selectbox('Select Analysis  Options', eda_kpi_options)
+        
+        num_columns = df_train.select_dtypes(['int64', 'float64']).columns
+   
     # Create a function to apply filters
     def apply_filters(df):
         slider_values = {}

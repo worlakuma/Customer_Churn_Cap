@@ -69,7 +69,7 @@ The app is organized into several key sections:
 ### Need Help?
 For support, collaboration, or any inquiries, please contact us at:
 - **Email**: [sdi@azubiafrica.com](mailto:wolakuma@gmail.com)
-- **Linkdin**: [Link](https://www.linkedin.com/in/gabrielkuma/)
+- **LinkedIn**: [Link](https://www.linkedin.com/in/gabrielkuma/)
 
 
 ### Colaborators
