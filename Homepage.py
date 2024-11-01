@@ -42,12 +42,14 @@ if not st.session_state.get('authentication_status'):  # Use .get() for session 
             Guest Account
             Username: jsmith
             Password: abc""")
-elif st.session_state['authentication_status'] == False:
-    st.error('Username/password is incorrect')
-elif st.session_state['authentication_status']:
+    
+    
+if st.session_state['authentication_status']:
+    # Place authenticator.logout in the sidebar
+    with st.sidebar:
+        authenticator.logout("Logout")
 
-    authenticator.logout("Logout", "sidebar")
-
+    
     selected = option_menu(None, options=["Home", "About Us"], 
             icons=['house','gear'], 
             menu_icon="cast", default_index=0, orientation="horizontal")
