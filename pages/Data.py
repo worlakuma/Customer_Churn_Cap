@@ -2,7 +2,6 @@ import requests
 from streamlit_lottie import st_lottie
 import streamlit as st
 import pandas as pd
-import pyodbc 
 import time
 import streamlit_authenticator as stauth
 from utils.login import invoke_login_widget
