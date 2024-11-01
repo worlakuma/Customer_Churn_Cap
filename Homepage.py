@@ -29,7 +29,7 @@ if 'authenticator' not in st.session_state:
             config['cookie']['name'],
             config['cookie']['key'],
             config['cookie']['expiry_days'],
-            config['preauthorized']
+            # config['preauthorized']
         )
 authenticator = st.session_state['authenticator']
 
