@@ -7,6 +7,7 @@ from streamlit_option_menu import option_menu
 import altair as alt
 from utils.lottie import display_lottie
 from utils.login import invoke_login_widget
+import gdown
 # from pages.Data import load_data
 
 # Invoke the login form
@@ -27,7 +28,7 @@ if st.session_state.get("authentication_status"):
     # Load default data
     @st.cache_data(persist=True, show_spinner=False)
     def load_default_data():
-        df = pd.read_csv('./data/clean_cap_data.csv')
+        df = pd.read_csv('./data/CAP_dash_upload.csv')
         return df
            
     df_train = load_default_data()

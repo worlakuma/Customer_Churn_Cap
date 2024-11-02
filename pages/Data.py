@@ -6,6 +6,7 @@ import time
 import streamlit_authenticator as stauth
 from utils.login import invoke_login_widget
 from utils.lottie import display_lottie
+import gdown
 
 # Invoke the login form
 invoke_login_widget('Data Hub')
@@ -43,15 +44,15 @@ if st.session_state.get("authentication_status"):
     # Load the data
     @st.cache_data(persist=True)
     def load_data():
-        df_train = pd.read_csv('./data/clean_cap_data.csv')
+        df_train = pd.read_csv('./data/CAP_dash_upload.csv')
         return df_train         
     
     default_df = load_data()
+    
     # Group various datatypes accordingly
     num_cols = default_df.select_dtypes('number').columns
     cat_cols = default_df.select_dtypes('object').columns
     
-
 
 # Create progress bar to show the results of loading
     loadings_progress = st.progress(0)
@@ -62,6 +63,7 @@ if st.session_state.get("authentication_status"):
 
     st.success('Template data loaded successfully') 
 
+   
 
 # Create two columns options to display summary statistics for numerical and categorical features
     col1, col2 = st.columns(2)
