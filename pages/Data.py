@@ -6,7 +6,6 @@ import time
 import streamlit_authenticator as stauth
 from utils.login import invoke_login_widget
 from utils.lottie import display_lottie
-import gdown
 
 # Invoke the login form
 invoke_login_widget('Data Hub')
